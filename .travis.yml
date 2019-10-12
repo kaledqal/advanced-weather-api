@@ -5,7 +5,9 @@ python:
 services:
   - docker
 
-before_script:  pip install docker-compose
+before_script:
+  - apk add python python-dev py-pip build-base libffi-dev openssl-dev libgcc
+  - pip install docker-compose
 
 script:
   - docker-compose run awa sh -c "python manage.py test && flake8"
